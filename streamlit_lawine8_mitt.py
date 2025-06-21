@@ -15,8 +15,8 @@ st.title("🧭 Lawinenbewertung – Massen- & Reichweitenanalyse")
 
 # --- Konstanten ---
 FARB_SCHWELLENWERTE = {
-    "gering": {"wert": 3.15, "text": "🟢 Geringe Gefahr", "farbe": "#90EE90"},
-    "maessig": {"wert": 3.7, "text": "🟡 Mäßige Gefahr", "farbe": "#FFF176"},
+    "gering": {"wert": 3.26, "text": "🟢 Geringe Gefahr", "farbe": "#90EE90"},
+    "maessig": {"wert": 4.21, "text": "🟡 Mäßige Gefahr", "farbe": "#FFF176"},
     "hoch": {"text": "🔴 Hohe Gefahr", "farbe": "#FF7F7F"}
 }
 
