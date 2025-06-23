@@ -28,46 +28,46 @@ FARB_SCHWELLENWERTE = {
 # --- Definition der Fragen, Optionen und Gewichte ---
 fragen = [
     ("Frage 1: Größe des Geländes", [
-        ("Sehr klein (z. B. schmaler Hangabschnitt)", 1),
-        ("Klein bis mittelgroß", 2.5),
-        ("Groß (mehrere Hangbereiche)", 4.5),
-        ("Sehr groß (Kar, verbundenes Gelände)", 7)
+        ("Sehr klein (z.B. schmaler Hangabschnitt)", 1),
+        ("Klein bis mittelgroß (einzelne Hänge oder kurze Rinnen)", 2.5),
+        ("Groß (mehrere zusammenhängende Hangbereiche)", 4.5),
+        ("Sehr groß (ausgedehntes Kar oder verbundenes Gelände)", 7)
     ], 1.5),
-    ("Frage 2: Schneemenge / Stabilität", [
-        ("Wenig Schnee, stabil", 1),
-        ("Mittlere Schneemenge, eher stabil", 4),
-        ("Viel Schnee, mit Schwachschichten", 5),
-        ("Sehr viel Schnee, instabil (z. B. Triebschnee, Nassschnee)", 8)
+    ("Frage 2: Schneemenge und Stabilität", [
+        ("Wenig Schnee, stabil (kaum Lawinenpotenzial)", 1),
+        ("Mittlere Schneemenge, eher stabil (lokale Auslösungen möglich)", 4),
+        ("Viel Schnee, mit Schwachschichten (erhöhtes Gefahrenpotenzial)", 5),
+        ("Sehr viel Schnee, instabil - Hoher Auslösegrad (z. B. Triebschnee, Nass- Gleitschnee,  großes Schwimmschneefundament)", 8)
     ], 2),
-    ("Frage 3: Schneemenge innerhalb der Lawinenbahn", [
-        ("Kaum Schnee – Lawine \"verhungert\"", 1),
+    ("Frage 3: Schneemenge in der Lawinenbahn", [
+        ('Kaum Schnee – Lawine "verhungert"', 1),
         ("Wenig Schnee – geringe Massenvergrößerung", 4),
         ("Viel Schnee – deutliche Massenvergrößerung", 5),
-        ("Sehr viel Schnee – erhebliche Massenvergrößerung", 8)
+        ("Sehr viel Schnee – erhebliche Massenvergrößerung (z. B. durch Neuschnee oder Triebschnee im Verlauf)", 8)
     ], 1.5),
-    ("Frage 4: Reibung / Unterlage", [
-        ("Nein, viel Reibung → bremst Lawine", 1),
-        ("Teilweise gefüllt", 2),
-        ("Weitgehend glatt oder gefüllt → wenig Bremsung", 4),
-        ("Vollständig glatt/eingefahren → fast keine Reibung", 7)
+    ("Frage 4: Bodenbeschaffenheit", [
+        ("Großer Widerstand → starke Bremswirkung (z.B. vorstehende Steine, Blöcke)", 1),
+        ("Unregelmäßiger Boden → teilweiser Widerstand (z.B. Vegetation, Geländeunebenheiten", 2),
+        ("Geglätteter Boden → wenig Widerstand (z.B. verdichtete Schneedecke oder Skirinnen)", 4),
+        ("Vollständig glatt → maximale Gleitfähigkeit (z.B. Lawinengras, vereiste Altschneedecke)", 7)
     ], 1.2),
     ("Frage 5: Hangauslauf / Reichweite", [
-        ("Nur kurz steil, danach flach → bremst schnell", 1),
-        ("Langer steiler Hangauslauf mit Hindernissen", 2),
-        ("Lang steil, einige Hindernisse / Staubereiche, große Reichweite", 4),
-        ("Lang steil, keine Hindernisse im Auslauf → sehr große Reichweite", 7)
+        ("Kurzer Auslauf, flach → Lawine wird rasch gebremst", 1),
+        ("Langer, steiler Auslauf mit Hindernissen (z.B. Bäume, Geländestufen)", 2),
+        ("Langer Auslauf, wenige Hindernisse oder Staubereiche → große Reichweite möglich", 4),
+        ("Langer, freier Auslauf – keine Hindernisse → sehr große Reichweite", 7)
     ], 1),
     ("Frage 6: Potenzielle Auswirkungen – Massenbewegung", [
-        ("Keine Gefahr, kaum Massenbewegung", 1),
-        ("Könnte eine Person erfassen", 3),
-        ("Könnte Fahrzeuge zerstören / Bäume fällen", 8),
-        ("Infrastruktur gefährdet (Straßen, Häuser, Züge)", 8)
+        ("Keine Gefahr- geringe Massenbewegung", 1),
+        ("Gefahr für Einzelpersonen → könnte Menschen erfassen", 3),
+        ("Gefahr für Objekte (z.B. Fahrzeuge, Bäume, kleine Bauwerke)", 8),
+        ("Gefahr für Infrastruktur (z.B. Straßen, Häuser, Bahnlinien)", 8)
     ], 2),
-    ("Frage 7: Entfernung zu Pisten / Infrastruktur", [
-        ("Lawine weit entfernt (keine Gefahr)", 1),
-        ("In Sichtweite von Pisten", 3),
-        ("Kann Pisten erreichen oder beeinflussen", 8),
-        ("Trifft direkt auf Pisten / Infrastruktur", 8)
+    ("Frage 7: Nähe zu Pisten oder Infrastruktur", [
+        ("Weit entfernt → keine relevante Gefährdung", 1),
+        ("In Sichtweite → Wahrnehmung möglich, aber keine direkte Gefährdung", 3),
+        ("Kann Pisten oder Infrastruktur erreichen → potenzielle Beeinträchtigung", 8),
+        ("Direkter Einfluss → trifft auf Pisten, Häuser, Verkehrswege", 8)
     ], 2)
 ]
 
