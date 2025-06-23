@@ -1,1 +1,5 @@
 streamlit
+matplotlib
+# Füge hier alle anderen Bibliotheken hinzu, die dein Skript verwendet
+numpy
+pandas
