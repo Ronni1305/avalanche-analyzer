@@ -7,6 +7,13 @@ import numpy as np
 st.set_page_config(page_title="Lawinenbewertung", layout="centered")
 
 # --- Session State Initialisierung ---
+# Ampelsymbole für SSD
+ampel_icons = {
+    "1: Stabilität Sehr schlecht / schlecht": "<div style='display:inline-block; width: 20px; height: 20px; background-color: #ff4b4b; border-radius: 50%; text-align:center; color: white; font-weight: bold;'>×</div>",
+    "2: Stabilität mittel": "<div style='display:inline-block; width: 20px; height: 20px; background-color: #ffa500; border-radius: 50%; text-align:center; color: white; font-weight: bold;'>!</div>",
+    "3: Stabilität gut": "<div style='display:inline-block; width: 20px; height: 20px; background-color: #4CAF50; border-radius: 50%; text-align:center; color: white; font-weight: bold;'>✓</div>"
+}
+
 fragen_definitions = {
     "Neuschneemenge (24h)": {"": 0, "1: > 40 cm / Tag": 4, "2: 20–40 cm / Tag": 2.5, "3: < 20 cm / Tag": 2},
     "Regenmenge": {"": 0, "1: starker Regen (> 5 mm)": 4, "2: leichter Regen (< 5 mm)": 2.5, "3: kein Regen": 3},
@@ -15,7 +22,12 @@ fragen_definitions = {
     "Verbindung zur Altschneedecke": {"": 0, "1: schlecht (kaltes Einschneien)": 3, "2: Beginn bei 0–2 °C": 2, "3: gut (Regen, dann Temperaturabfall)": 1},
     "Wind/Verfrachtung": {"": 0, "1: starker Wind (> 40 km/h)": 3, "2: mäßiger Wind (< 40 km/h)": 2, "3: kein/wenig Wind": 1},
     "Exposition/Sonneneinstrahlung": {"": 0, "1: starke Sonneneinstrahlung": 3.5, "2: mäßige Sonneneinstrahlung": 2.5, "3: kaum oder keine Sonneneinstrahlung": 2},
-    "SSD (vSSD)": {"": 0, "1: schlechte Struktur (große Kristalle, weich, dünn)": 4, "2: teils kritische Schwachschichten": 2.5, "3: stabile Struktur (klein, fest, dick)": 2},
+  "SSD (vSSD)": {
+    "": 0,
+    "1: 🔴 Stabilität Sehr schlecht / schlecht": 4,
+    "2: 🟡 Stabilität mittel": 2.5,
+    "3: 🟢 Stabilität gut": 2
+},
     "Hangneigung / Exposition": {"": 0, "1: > 35° und ungünstige Exposition": 4, "2: 30–35° oder teils ungünstig": 2, "3: < 30° oder günstige Exposition": 1}
 }
 
@@ -30,7 +42,14 @@ auswahl_typen = []
 
 with st.form("lawinen_form_main"):
     for frage, optionen in fragen_definitions.items():
-        auswahl = st.radio(frage, list(optionen.keys()), index=list(optionen.keys()).index(st.session_state[f"radio_{frage}"]), key=f"radio_{frage}")
+        auswahl = st.radio(frage, list(optionen.keys()),
+                           index=list(optionen.keys()).index(st.session_state[f"radio_{frage}"]),
+                           key=f"radio_{frage}")
+        
+        # Anzeige der Ampelsymbole nur bei SSD
+        if frage == "SSD (vSSD)" and auswahl in ampel_icons:
+            st.markdown(f"<div style='margin-top: -10px; margin-bottom: 10px;'>{ampel_icons[auswahl]}</div>", unsafe_allow_html=True)
+
         if auswahl:
             punkte.append(optionen[auswahl])
             auswahl_typen.append(auswahl[0])
@@ -63,7 +82,6 @@ with st.form("lawinen_form_main"):
                 </div>
             """, unsafe_allow_html=True)
 
-    # Punktwert aus Setzung nur einbeziehen, wenn berechnet
     if punktwert_setzung:
         punkte.append(punktwert_setzung)
         auswahl_typen.append("S")
@@ -105,4 +123,3 @@ if st.session_state.get("radio_Neuschneemenge (24h)"):
 if st.button("🔄 Zurücksetzen"):
     st.session_state.clear()
     st.rerun()
-
