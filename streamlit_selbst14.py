@@ -82,8 +82,8 @@ with st.form("lawinen_form_main"):
     # Fragen zur Lawinenbewertung
     for frage, optionen in fragen_definitions.items():
         auswahl = st.radio(frage, list(optionen.keys()),
-                               index=list(optionen.keys()).index(st.session_state[f"radio_{frage}"]),
-                               key=f"radio_{frage}")
+                                 index=list(optionen.keys()).index(st.session_state[f"radio_{frage}"]),
+                                 key=f"radio_{frage}")
 
         if frage == "SSD (vSSD)" and auswahl in ampel_icons:
             st.markdown(f"<div style='margin-top: -10px; margin-bottom: 10px;'>{ampel_icons[auswahl]}</div>", unsafe_allow_html=True)
@@ -192,6 +192,8 @@ with st.form("lawinen_form_main"):
     """
     st.markdown(slider_html, unsafe_allow_html=True)
 
+    # Dieser Streamlit-Slider wird immer die Zahlen anzeigen, da dies sein Standardverhalten ist.
+    # Es gibt keine einfache Möglichkeit, die Zahlen (Wert und Endpunkte) direkt zu verbergen.
     eigene_einschaetzung = st.slider(
         "Gefahr selbst einschätzen (hoch = links, gering = rechts)",
         min_value=1.0,  # Kleinster Wert (rechts, gering)
@@ -218,7 +220,7 @@ with st.form("lawinen_form_main"):
     st.markdown("---") 
     
     # --- Finale Auswahl der Verhaltensempfehlung (innerhalb des Forms) ---
-    st.markdown("### **Wählen Sie Ihre finale Einschätzung:**")
+    st.markdown("### **Treffen Sie Ihre finale Entscheidung zur Verhaltensweise:**")
         
     selected_final_recommendation_radio = st.radio(
         "Ihre finale Auswahl:",
@@ -269,7 +271,7 @@ if submitted and bestaetigt:
             </div>
         """, unsafe_allow_html=True)
 
-        st.subheader("Gefahrenindex auf Skala")
+        st.subheader("Gefahrenindex auf Skala (System-Einschätzung):") # Angepasster Titel
         fig, ax = plt.subplots(figsize=(6, 1.5))
         cmap = plt.cm.colors.ListedColormap(['#4CAF50', '#ffa500', '#ff4b4b'])
         bounds = [1.95, 2.2, 3.3, 3.65] # Die Bereiche der Ampelfarben auf der Skala
@@ -280,13 +282,14 @@ if submitted and bestaetigt:
         ax.set_xlim(4.0, 1.0) # Skala von rechts (gering) nach links (hoch)
         ax.axhline(0.5, color='white', linestyle='--')
         ax.plot(gefahrenindex, 0.5, 'wo', markersize=10, markeredgecolor='black')
-        ax.text(gefahrenindex, -0.3, f"{gefahrenindex:.2f}", ha='center', fontsize=10)
-        ax.axis('off')
+        # Die Zeile für die Anzeige des Gefahrenindex-Wertes wurde entfernt, um ihn auf dem Plot auszublenden.
+        # ax.text(gefahrenindex, -0.3, f"{gefahrenindex:.2f}", ha='center', fontsize=10) 
+        ax.axis('off') # Diese Zeile sorgt dafür, dass die Achsenbeschriftungen (wie 1 und 4) nicht angezeigt werden
         st.pyplot(fig)
         
         # --- Anzeige der spezifischen Verhaltensempfehlungen basierend auf dem Index ---
         st.markdown("---")
-        st.subheader("Ihre Verhaltensempfehlung:")
+        st.subheader("Ihre Verhaltensempfehlung (berechnet vom System):") 
         st.markdown(verhalten_zu_anzeigen)
 
     else:
