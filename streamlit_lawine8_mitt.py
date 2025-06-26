@@ -55,7 +55,7 @@ fragen = [
         ("Kurzer Auslauf, flach → Lawine wird rasch gebremst", 1),
         ("Langer, steiler Auslauf mit Hindernissen (z.B. Bäume, Geländestufen)", 2),
         ("Langer Auslauf, wenige Hindernisse/Staubereiche → große Reichweite möglich (Ø-Gefälle ~ 26–27°)", 4),
-        ("Langer, freier Auslauf – keine Hindernisse → sehr große Reichweite", 7)
+        ("Langer, freier Auslauf – keine Hindernisse → sehr große Reichweite(Ø-Gefälle > 26–27°)", 7)
     ], 1),
     ("Frage 6: Potenzielle Auswirkungen – Massenbewegung", [
         ("Keine Gefahr- geringe Massenbewegung", 1),
