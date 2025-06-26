@@ -71,6 +71,17 @@ for frage in fragen_definitions:
 if "selected_final_recommendation" not in st.session_state:
     st.session_state.selected_final_recommendation = list(verhaltensempfehlungen.keys())[0]
 
+# Initialisiere den Zustand, ob der finale Radio-Button geklickt wurde
+if "final_radio_clicked" not in st.session_state:
+    st.session_state.final_radio_clicked = False
+
+# Callback-Funktion für den finalen Radio-Button (jetzt außerhalb des Formulars gültig)
+def on_final_radio_change():
+    st.session_state.final_radio_clicked = True
+    # Der Wert wird automatisch über den 'key' im Session State aktualisiert
+    # und muss hier nicht mehr manuell zugewiesen werden.
+    # st.session_state.selected_final_recommendation = st.session_state.final_recommendation_radio
+
 st.title("Selbstauslösung von Neuschnee-Lawinen")
 st.markdown("Bewertung nach Ampelsystem")
 
@@ -218,29 +229,36 @@ with st.form("lawinen_form_main"):
             st.markdown(empfehlungen_text)
     
     st.markdown("---") 
-    
-    # --- Finale Auswahl der Verhaltensempfehlung (innerhalb des Forms) ---
-    st.markdown("### **Treffen Sie Ihre finale Entscheidung zur Verhaltensweise:**")
-        
-    selected_final_recommendation_radio = st.radio(
-        "Ihre finale Auswahl:",
-        options=list(verhaltensempfehlungen.keys()),
-        index=list(verhaltensempfehlungen.keys()).index(st.session_state.selected_final_recommendation),
-        key="final_recommendation_radio",
-        label_visibility="collapsed" # Versteckt das Label des Radios
-    )
-    # Speichere die Auswahl direkt im Session State
-    st.session_state.selected_final_recommendation = selected_final_recommendation_radio
-
-    st.info(f"Sie werden **{st.session_state.selected_final_recommendation}** speichern.")
-    st.markdown("---")
 
     # --- Checkbox und Submit Button des Formulars ---
     bestaetigt = st.checkbox("✅ Ich habe meine persönliche Einschätzung getroffen")
     submitted = st.form_submit_button("Formular speichern")
 
 
+# --- Finale Auswahl der Verhaltensempfehlung (JETZT WIEDER AUSSERHALB DES FORMS) ---
+st.markdown("### **Treffen Sie Ihre finale Entscheidung zur Verhaltensweise:**")
+    
+selected_final_recommendation_radio = st.radio(
+    "Ihre finale Auswahl:",
+    options=list(verhaltensempfehlungen.keys()),
+    index=list(verhaltensempfehlungen.keys()).index(st.session_state.selected_final_recommendation),
+    key="final_recommendation_radio",
+    label_visibility="collapsed", # Versteckt das Label des Radios
+    on_change=on_final_radio_change # Callback ist jetzt wieder erlaubt und funktioniert
+)
+# Speichere die Auswahl direkt im Session State (aus dem Key des Radios)
+st.session_state.selected_final_recommendation = selected_final_recommendation_radio
+
+
+# Die Info-Box nur anzeigen, wenn der Radio-Button geklickt wurde
+# UND der Wert im Session State gesetzt ist.
+if st.session_state.final_radio_clicked and st.session_state.selected_final_recommendation:
+    st.info(f"Sie werden **{st.session_state.selected_final_recommendation}** speichern.")
+st.markdown("---")
+
+
 # --- Ergebnisberechnung und Anzeige (nach dem Formular-Submit) ---
+# HINWEIS: Dieser Block wird nur ausgeführt, wenn der 'Formular speichern'-Button gedrückt wird.
 if submitted and bestaetigt: 
     typ1 = auswahl_typen.count("1")
     typ2 = auswahl_typen.count("2")
@@ -271,7 +289,7 @@ if submitted and bestaetigt:
             </div>
         """, unsafe_allow_html=True)
 
-        st.subheader("Gefahrenindex auf Skala (System-Einschätzung):") # Angepasster Titel
+        st.subheader("Gefahrenindex auf Skala (System-Einschätzung):") 
         fig, ax = plt.subplots(figsize=(6, 1.5))
         cmap = plt.cm.colors.ListedColormap(['#4CAF50', '#ffa500', '#ff4b4b'])
         bounds = [1.95, 2.2, 3.3, 3.65] # Die Bereiche der Ampelfarben auf der Skala
@@ -282,8 +300,6 @@ if submitted and bestaetigt:
         ax.set_xlim(4.0, 1.0) # Skala von rechts (gering) nach links (hoch)
         ax.axhline(0.5, color='white', linestyle='--')
         ax.plot(gefahrenindex, 0.5, 'wo', markersize=10, markeredgecolor='black')
-        # Die Zeile für die Anzeige des Gefahrenindex-Wertes wurde entfernt, um ihn auf dem Plot auszublenden.
-        # ax.text(gefahrenindex, -0.3, f"{gefahrenindex:.2f}", ha='center', fontsize=10) 
         ax.axis('off') # Diese Zeile sorgt dafür, dass die Achsenbeschriftungen (wie 1 und 4) nicht angezeigt werden
         st.pyplot(fig)
         
@@ -294,9 +310,9 @@ if submitted and bestaetigt:
 
     else:
         if len(punkte) == 0:
-            st.info("ℹ️ Bitte füllen Sie mindestens eine Frage aus, um eine Bewertung zu erhalten.")
+            st.info("Bitte füllen Sie mindestens eine Frage aus, um eine Bewertung zu erhalten.")
         else:
-            st.info("ℹ️ Bitte mindestens 3 Antworten mit dem gleichen Gefahren-Typ (1, 2 oder 3) auswählen, um eine detaillierte Gefahrenindex-Berechnung zu erhalten.")
+            st.info("Bitte mindestens 3 Antworten mit dem gleichen Gefahren-Typ (1, 2 oder 3) auswählen, um eine detaillierte Gefahrenindex-Berechnung zu erhalten.")
 
 # --- Zurücksetzen der Anwendung ---
 if st.button("🔄 Zurücksetzen"):
