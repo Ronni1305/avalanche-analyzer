@@ -28,7 +28,7 @@ FARB_SCHWELLENWERTE = {
 # --- Definition der Fragen, Optionen und Gewichte ---
 fragen = [
     ("Frage 1: Größe des Geländes", [
-        ("Sehr klein (z.B. schmaler Hangabschnitt)", 1),
+        ("Sehr klein (z.B. schmaler Hangabschnitt - wenig Masse)", 1),
         ("Klein bis mittelgroß (einzelne Hänge oder kurze Rinnen)", 2.5),
         ("Groß (mehrere zusammenhängende Hangbereiche)", 4.5),
         ("Sehr groß (ausgedehntes Kar oder verbundenes Gelände)", 7)
@@ -54,8 +54,8 @@ fragen = [
     ("Frage 5: Hangauslauf / Reichweite", [
         ("Kurzer Auslauf, flach → Lawine wird rasch gebremst", 1),
         ("Langer, steiler Auslauf mit Hindernissen (z.B. Bäume, Geländestufen)", 2),
-        ("Langer Auslauf, wenige Hindernisse/Staubereiche → große Reichweite möglich (Ø-Gefälle ~ 26–27°)", 4),
-        ("Langer, freier Auslauf – keine Hindernisse → sehr große Reichweite(Ø-Gefälle > 26–27°)", 7)
+        ("Langer Auslauf, wenige Hindernisse/Staubereiche → große Reichweite möglich (Pauschalgefälle-Gefälle ~ 26–27°, von Auslösepunkt bis Ende Aufschüttung)", 4),
+        ("Langer, freier Auslauf – keine Hindernisse → sehr große Reichweite(Pauschalgefälle-Gefälle ~ 26–27°, von Auslösepunkt bis Ende Aufschüttung)", 7)
     ], 1),
     ("Frage 6: Potenzielle Auswirkungen – Massenbewegung", [
         ("Keine Gefahr- geringe Massenbewegung", 1),
