@@ -63,7 +63,7 @@ fragen = [
         ("Gefahr für Objekte (z.B. Fahrzeuge, Bäume, kleine Bauwerke)", 8),
         ("Gefahr für Infrastruktur (z.B. Straßen, Häuser, Bahnlinien)", 8)
     ], 2),
-    ("Frage 7: Potenzielle Erreichbarkeit von Infrastruktur durch Lawine", [
+    ("Frage 7: Potenzielle Erreichbarkeit von Skipisten oder Infrastruktur", [
         ("Weit entfernt → keine relevante Gefährdung", 1),
         ("In Sichtweite → Wahrnehmung möglich, aber keine direkte Gefährdung", 3),
         ("Kann Pisten oder Infrastruktur erreichen → potenzielle Beeinträchtigung", 8),
