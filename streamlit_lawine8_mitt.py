@@ -43,7 +43,7 @@ fragen = [
         ('Kaum Schnee – Lawine "verhungert"', 1),
         ("Wenig Schnee – geringe Massenvergrößerung", 4),
         ("Viel Schnee – deutliche Massenvergrößerung", 5),
-        ("Sehr viel Schnee – erhebliche Massenvergrößerung (z. B. durch Neuschnee oder Triebschnee im Verlauf)", 8)
+        ("Sehr viel Schnee – erhebliche Massenvergrößerung (z. B. große Neuschneemengen bis ins Tal oder Triebschnee im Verlauf)", 8)
     ], 1.5),
     ("Frage 4: Bodenbeschaffenheit", [
         ("Großer Widerstand → starke Bremswirkung (z.B. vorstehende Steine, Blöcke)", 1),
