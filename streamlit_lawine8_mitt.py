@@ -27,17 +27,17 @@ FARB_SCHWELLENWERTE = {
 
 # --- Definition der Fragen, Optionen und Gewichte ---
 fragen = [
-    ("Frage 1: Größe des Geländes", [
-        ("Sehr klein (z.B. schmaler Hangabschnitt - wenig Masse)", 1),
-        ("Klein bis mittelgroß (einzelne Hänge oder kurze Rinnen)", 2.5),
-        ("Groß (mehrere zusammenhängende Hangbereiche)", 4.5),
-        ("Sehr groß (ausgedehntes Kar oder verbundenes Gelände)", 7)
+    ("Frage 1: Einzugsbegiet: Größe des Geländes", [
+        ("Sehr klein: Schmaler Hangabschnitt - geringe verfügbare Masse", 1),
+        ("Klein bis mittelgroß: Einzelne Hänge oder kurze Rinnen – mittlere verfügbare Masse", 2.5),
+        ("Groß: Mehrere zusammenhängende Hangbereiche – große verfügbare Masse", 4.5),
+        ("Sehr groß: Ausgedehntes Kar oder verbundenes Gelände – sehr große verfügbare Masse", 7)
     ], 1.5),
-    ("Frage 2: Schneemenge und Stabilität", [
-        ("Wenig Schnee, stabil (kaum Lawinenpotenzial)", 1),
-        ("Mittlere Schneemenge, eher stabil (lokale Auslösungen möglich)", 4),
-        ("Viel Schnee, mit Schwachschichten (erhöhtes Gefahrenpotenzial)", 5),
-        ("Sehr viel Schnee, instabil - Hohe verfügbare Masse für weite Reichweite (z. B. Triebschnee, Nass- Gleitschnee,  großes Schwimmschneefundament)", 8)
+    ("Frage 2: Einzugsbegiet: Schneemenge und Stabilität", [
+        ("Wenig Schnee, stabil: Kaum Lawinenpotenzial", 1),
+        ("Mittlere Schneemenge, eher stabil: Lokale Auslösungen möglich", 4),
+        ("Viel Schnee, mit Schwachschichten: Erhöhtes Gefahrenpotenzial", 5),
+        ("Sehr viel Schnee, instabil: (z. B. Triebschnee, Nass- Gleitschnee,  großes Schwimmschneefundament) - Potenzial für große, weitreichende Lawinen", 8)
     ], 2),
     ("Frage 3: Schneemenge in der Lawinenbahn", [
         ('Kaum Schnee – Lawine "verhungert"', 1),
@@ -49,12 +49,12 @@ fragen = [
         ("Hohe Bremswirkung → Viele Hindernisse oder rauer Boden: z. B. Felsen, Blöcke, dichter Bewuchs – verlangsamt Lawine deutlich", 1),
         ("Mäßige Bremswirkung → Teilweise bremsende Elemente: Vegetation, kleinere Unebenheiten – begrenzte Reichweitenverlängerung", 2),
         ("Geringe Bremswirkung → Glatter, harter Untergrund: z. B. kompakte Altschneedecke, verharschter Schnee – fördert längeren Fluss", 4),
-        ("Sehr geringe Bremswirkung → Eisige oder steile, glatte Flächen: z. B. Lawinengras, Wasserfalleis, vereiste Altschneedecke – Lawine gleitet weit", 7)
+        ("Sehr geringe Bremswirkung → Eisige oder steile, glatte Flächen: z. B. Lawinengras, Wasserfalleis, vereiste Altschneedecke – Lawine gleitet sehr weit", 7)
     ], 1.2),
     ("Frage 5: Hangauslauf / Reichweite", [
         ("Kurzer Auslauf, flach → Lawine wird rasch gebremst", 1),
         ("Langer, steiler Auslauf mit Hindernissen (z.B. Bäume, Geländestufen)", 2),
-        ("Langer Auslauf, wenige Hindernisse/Staubereiche → große Reichweite möglich (Pauschalgefälle-Gefälle ~ 26–27°, von Auslösepunkt bis Ende Aufschüttung)", 4),
+        ("Langer Auslauf, wenige Hindernisse/Stau- oder Bremsbereiche → große Reichweite möglich (Pauschalgefälle-Gefälle ~ 26–27°, von Auslösepunkt bis Ende Aufschüttung)", 4),
         ("Langer, freier Auslauf – keine Hindernisse → sehr große Reichweite(Pauschalgefälle-Gefälle ~ 26–27°, von Auslösepunkt bis Ende Aufschüttung)", 7)
     ], 1),
     ("Frage 6: Potenzielle Auswirkungen – Massenbewegung", [
