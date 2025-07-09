@@ -37,19 +37,19 @@ fragen = [
         ("Wenig Schnee, stabil (kaum Lawinenpotenzial)", 1),
         ("Mittlere Schneemenge, eher stabil (lokale Auslösungen möglich)", 4),
         ("Viel Schnee, mit Schwachschichten (erhöhtes Gefahrenpotenzial)", 5),
-        ("Sehr viel Schnee, instabil - Hoher Auslösegrad (z. B. Triebschnee, Nass- Gleitschnee,  großes Schwimmschneefundament)", 8)
+        ("Sehr viel Schnee, instabil - Hohe verfügbare Masse für weite Reichweite (z. B. Triebschnee, Nass- Gleitschnee,  großes Schwimmschneefundament)", 8)
     ], 2),
     ("Frage 3: Schneemenge in der Lawinenbahn", [
         ('Kaum Schnee – Lawine "verhungert"', 1),
         ("Wenig Schnee – geringe Massenvergrößerung", 4),
         ("Viel Schnee – deutliche Massenvergrößerung", 5),
-        ("Sehr viel Schnee – erhebliche Massenvergrößerung (z. B. große Neuschneemengen bis ins Tal oder Triebschnee im Verlauf)", 8)
+        ("Sehr viel Schnee – erhebliche Massenvergrößerung (z.B. große Neuschneemengen bis ins Tal oder Triebschnee im Verlauf)", 8)
     ], 1.5),
     ("Frage 4: Bodenbeschaffenheit", [
-        ("Großer Widerstand → starke Bremswirkung (z.B. vorstehende Steine, Blöcke)", 1),
-        ("Unregelmäßiger Boden → teilweiser Widerstand (z.B. Vegetation, Geländeunebenheiten", 2),
-        ("Geglätteter Boden → wenig Widerstand (z.B. verdichtete Schneedecke oder Skirinnen)", 4),
-        ("Vollständig glatt → maximale Gleitfähigkeit (z.B. Lawinengras, vereiste Altschneedecke)", 7)
+        ("Hohe Bremswirkung → Viele Hindernisse oder rauer Boden: z. B. Felsen, Blöcke, dichter Bewuchs – verlangsamt Lawine deutlich", 1),
+        ("Mäßige Bremswirkung → Teilweise bremsende Elemente: Vegetation, kleinere Unebenheiten – begrenzte Reichweitenverlängerung", 2),
+        ("Geringe Bremswirkung → Glatter, harter Untergrund: z. B. kompakte Altschneedecke, verharschter Schnee – fördert längeren Fluss", 4),
+        ("Sehr geringe Bremswirkung → Eisige oder steile, glatte Flächen: z. B. Lawinengras, Wasserfalleis, vereiste Altschneedecke – Lawine gleitet weit", 7)
     ], 1.2),
     ("Frage 5: Hangauslauf / Reichweite", [
         ("Kurzer Auslauf, flach → Lawine wird rasch gebremst", 1),
@@ -63,7 +63,7 @@ fragen = [
         ("Gefahr für Objekte (z.B. Fahrzeuge, Bäume, kleine Bauwerke)", 8),
         ("Gefahr für Infrastruktur (z.B. Straßen, Häuser, Bahnlinien)", 8)
     ], 2),
-    ("Frage 7: Nähe zu Pisten oder Infrastruktur", [
+    ("Frage 7: Potenzielle Erreichbarkeit von Infrastruktur durch Lawine", [
         ("Weit entfernt → keine relevante Gefährdung", 1),
         ("In Sichtweite → Wahrnehmung möglich, aber keine direkte Gefährdung", 3),
         ("Kann Pisten oder Infrastruktur erreichen → potenzielle Beeinträchtigung", 8),
